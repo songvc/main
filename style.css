@@ -430,7 +430,7 @@ html,
 body {
 	width:100%;
 	height:100%;
-  font-size: 1em;
+  font-size: 16px;
 }
 
 h1,h2,h3,h4,h5,h6,p,pre {
@@ -444,62 +444,57 @@ a {
   display:block;
 }
 
-h1 {
-  position:relative;
-  height:100%;
-  width:100%;
-  transition: all .4s;
-  color:black;
-  letter-spacing: 5px;
-  font-size: 1.2em;
-}
-
-h1::before {
-  content: "XXXX";
-  position: absolute;
-  height:100%;
-  width:100%;
-  left:-100%;
-  transition: all .4s;
-}
-
 .container-group {
-  height:100%;
-  width:100%;
+  height:inherit;
   display:flex;
   flex-flow: row wrap;
 }
 
-.container-item {
-  flex: 1 50%;
+.container-list {
   position: relative;
-  overflow: hidden;
   display: flex;
-  text-align: center;
+  flex: 1 50%;
+  overflow: hidden;
+  height:50%;
 }
 
-.container-item:not(#extra){
-  align-items: center;
-}
-
-.container-item:not(#extra) > a {
+.container-link-overlay {
   position:absolute;
   width:100%;
   height:100%;
   z-index:1;
 }
 
-.container-item > a:hover + h1 {
+.container-title {
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  height:100%;
+  width:100%;
+  transition: all .4s;
+  color:black;
+  letter-spacing: 5px;
+  font-size: 1.25em;
+}
+
+.container-title::before {
+  position: absolute;
+  left:-50%;
+  transform: translate3d(-50%,-25%,0);
+  transition: all .4s;
+}
+
+.container-link-overlay:hover + .container-title {
   transition: transform .4s;
   transform: translate3d(100%,0,0);
 }
-
 
 #blog {
   background-color: #AAC39C;
 }
 
-#blog > h1::before {
+#blog > .container-title::before {
   content: "\f143";
   font-family: FontAwesome;
   font-size: 2em;
@@ -509,7 +504,7 @@ h1::before {
   background-color: #5A86BF;
 }
 
-#portfolio > h1::before {
+#portfolio > .container-title::before {
   content: "\f008";
   font-family: FontAwesome;
   font-size: 2em;
@@ -524,28 +519,28 @@ h1::before {
   background-color: #D95A4E;
 }
 
-#lab > h1::before {
+#lab > .container-title::before {
   content: "\f1b3";
   font-family: FontAwesome;
   font-size: 2em;
 }
 
-.extra-item {
+.extra-list {
   flex: 1 50%;
   position:relative;
   overflow: hidden;
   display:flex;
-  align-items: center;
+  height:50%;
 }
 
-.extra-item > a {
+.extra-link-overlay {
   position:absolute;
   width:100%;
   height:100%;
   z-index:1;
 }
 
-.extra-item > a:hover + h1 {
+.extra-link-overlay:hover + .container-title {
   transition: transform .4s;
   transform: translate3d(100%,0,0);
 }
@@ -554,7 +549,7 @@ h1::before {
   background-color: #F2D194;
 }
 
-#twitter > h1::before {
+#twitter > .container-title::before {
   content: "\f099";
   font-family: FontAwesome;
   font-size: 2em;
@@ -564,7 +559,7 @@ h1::before {
   background-color: #FFE9C0;
 }
 
-#github > h1::before {
+#github > .container-title::before {
   content: "\f09b";
   font-family: FontAwesome;
   font-size: 2em;
@@ -574,7 +569,7 @@ h1::before {
   background-color: #C9A25B;
 }
 
-#codepen > h1::before {
+#codepen > .container-title::before {
   content:  "\f1cb";
   font-family: FontAwesome;
   font-size: 2em;
@@ -584,24 +579,20 @@ h1::before {
   background-color: #9C752B;
 }
 
-#contact > h1::before {
+#contact > .container-title::before {
   content: "\f01c";
   font-family: FontAwesome;
   font-size: 2em;
 }
 
-.center {
+#center {
   position:absolute;
-  display:block;
   background-color: white;
   z-index:2;
-  /*height:250px;*/
-  /*width:250px;*/
-  left:0;
-  top:0;
-  transform:translateX(100%);
-  /*transform: translate3d(50%,50%,0);*/
-}
-.center:hover {
-  background-color:black;
+  height:100px;
+  width:100px;
+  border-radius: 50%;
+  left:50%;
+  top:50%;
+  transform: translate3d(-50%,-50%,0);
 }
