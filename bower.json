@@ -1,0 +1,7 @@
+{
+  "name": "main",
+  "private": true,
+  "dependencies": {
+    "modernizr": "~2.8.1"
+  }
+}
